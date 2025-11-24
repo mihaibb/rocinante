@@ -1,0 +1,23 @@
+<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
+  <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+    <div class="mb-8">
+      <h1 class="text-3xl font-extrabold">
+        <%= t('passwords.new.forgot_password') %>
+      </h1>
+    </div>
+
+    <%= form_with(url: passwords_path, html: { class: "space-y-6" }, data: { turbo: false }) do |f| %>
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+        <div class="mt-1">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, value: params[:email],
+              class: 'input', placeholder: t('passwords.new.email_placeholder') %>
+        </div>
+      </div>
+
+      <div>
+        <%= f.submit t('passwords.new.send_instructions'), class: 'btn btn-wide btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

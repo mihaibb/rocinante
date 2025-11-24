@@ -1,0 +1,158 @@
+#!/usr/bin/env ruby
+require "optparse"
+
+@options = {ns: "labs"}
+
+OptionParser.new do |opt|
+  opt.on("--app app_name")
+  opt.on("--ns labs|frombase")
+  opt.on("--debug")
+end.parse!(into: @options)
+
+puts "With options: #{@options.inspect}"
+
+if @options[:app].nil? || @options[:ns].nil?
+  puts "Please use --app to specify the app name, --ns to specify the namespace (frombase, labs) default to labs"
+
+  exit
+end
+
+class RailsAppSetup
+  class << self
+    def start(options = {})
+      new(options).start
+    end
+  end
+
+  def initialize(options)
+    @app_name = options[:app] || "new_rails_app"
+    @namespace = options[:ns] || "labs"
+    @debug = options[:debug] || true
+
+    if @namespace == "frombase"
+      @app_base_path = "~/Projects/frombase/#{@app_name}"
+    elsif @namespace == "labs"
+      @app_base_path = "~/Projects/labs/#{@app_name}"
+    else
+      raise "Unknown namespace: #{@namespace}"
+    end
+  end
+
+  def app_path(path = nil)
+    [@app_base_path, path].compact.join("/")
+  end
+
+  def local_path(path)
+    File.expand_path("#{path}", __dir__)
+  end
+
+  def run(cmd)
+    puts cmd if @debug
+    `#{cmd}`
+  end
+
+  def run_app(cmd)
+    puts cmd if @debug
+    `cd #{app_path} && #{cmd}`
+  end
+
+  def copy_file(from_path, to_path)
+    run("cp #{local_path(from_path)} #{app_path(to_path)}")
+  end
+
+  def copy_dir(from_path, to_path)
+    run("cp -r #{local_path(from_path)}/. #{app_path(to_path)}")
+  end
+
+  def start
+    # create the project path if it doesn't exist
+    run("rails new #{app_path} -n #{@app_name} -j esbuild -c tailwind --main --skip-kamal")
+
+    # Rails install storage and rich text
+    run_app("bin/rails action_text:install")
+
+    # copy templates to the project path
+    copy_file(".editorconfig", ".editorconfig")
+
+    run_app("git add .")
+    run_app("git commit -m 'Initialize'")
+
+    copy_file("Gemfile", "Gemfile")
+
+    run_app("bundle install")
+    run_app("bin/rails g authentication")
+
+    # Rename email_address to email in user model
+    run_app("sed -i '' -e 's/email_address/email/g' app/models/user.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' db/migrate/*_create_users.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' app/controllers/passwords_controller.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' app/controllers/sessions_controller.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' app/mailers/passwords_mailer.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' app/views/passwords/new.html.erb")
+    run_app("sed -i '' -e 's/email_address/email/g' app/views/sessions/new.html.erb")
+    run_app("sed -i '' -e 's/email_address/email/g' test/controllers/passwords_controller_test.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' test/controllers/sessions_controller_test.rb")
+    run_app("sed -i '' -e 's/email_address/email/g' test/fixtures/users.yml")
+    run_app("sed -i '' -e 's/email_address/email/g' test/models/user_test.rb")
+
+    # Add first name and last name to users
+    run_app("sed -i '' $'4i\\\n      t.string :first_name, null: false \n' db/migrate/*_create_users.rb")
+    run_app("sed -i '' $'5i\\\n      t.string :last_name \n' db/migrate/*_create_users.rb")
+
+    # Setup annotate
+    run_app("bin/rails g annotate:install")
+    run_app("sed -i '' -e 's/before/after/g' lib/tasks/auto_annotate_models.rake")
+
+    # Setup assets
+    copy_dir("app/assets/stylesheets", "app/assets/stylesheets")
+    copy_dir("app/javascript", "app/javascript")
+
+    # Setup marketing page
+    run_app("sed -i '' -e 's/# root \"posts#index\"/root \"marketing#index\"/g' config/routes.rb")
+    copy_file("config/routes.rb", "config/routes.rb")
+
+    # Setup helpers
+    copy_dir("app/helpers", "app/helpers")
+
+    # Setup controllers
+    copy_dir("app/controllers", "app/controllers")
+
+    # Setup views
+    copy_dir("app/views", "app/views")
+
+    # Setup organization
+    run_app("bin/rails g model Organization name owner_id:integer slug:string:uniq")
+    copy_file("app/models/organization.rb", "app/models/organization.rb")
+
+    # Setup user organization
+    run_app("bin/rails g model UserOrganization user:references organization:references role")
+    run_app("sed -i '' $'10i\\\n\\\n    add_index :user_organizations, [:user_id, :organization_id], unique: true \n' db/migrate/*_create_user_organizations.rb")
+
+    copy_dir("app/models", "app/models")
+
+    # Setup tailwind
+    # run_app("yarn add @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio")
+    # copy_file("tailwind.config.js", "tailwind.config.js")
+
+    copy_file("package.json", "package.json")
+    run_app("yarn install")
+    run_app("yarn upgrade")
+
+    # Translations
+    copy_file("config/locales/en.yml", "config/locales/en.yml")
+    copy_file("config/locales/ro.yml", "config/locales/ro.yml")
+
+    # DB seeds
+    copy_file("db/seeds.rb", "db/seeds.rb")
+
+    # Update the database
+    run_app("bin/rails db:migrate")
+    run_app("bin/rails db:seed")
+    run_app("bin/rubocop")
+
+    run_app("git add .")
+    run_app("git commit -m 'Setup initial application structure'")
+  end
+end
+
+RailsAppSetup.start(@options)

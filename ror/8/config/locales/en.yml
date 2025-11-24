@@ -1,0 +1,17 @@
+en:
+  application:
+    name: "APP NAME"
+
+
+  sessions:
+    new:
+      sign_in: "Sign In"
+      forgot_password: "Forgot your password?"
+      create_account: "Create an account"
+      or: "Or"
+
+  passwords:
+    new:
+      forgot_password: "Forgot your password?"
+      email_placeholder: "Enter your email address"
+      send_instructions: "Send email reset instructions"

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html class="h-full bg-base-100">
+  <head>
+    <title><%= app_name %></title>
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="<%= app_name %>">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <%= turbo_refresh_method_tag :morph %>
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+
+    <%= yield(:head) %>
+  </head>
+
+  <body class="min-h-screen">
+    <%= render partial: 'layouts/navbar' %>
+    <%= render partial: 'layouts/alerts' %>
+
+    <% if @full_page %>
+      <%= yield %>
+    <% else %>
+      <div class="max-w-7xl mx-auto py-2.5 px-8">
+        <%= yield %>
+      </div>
+    <% end %>
+
+    <%= turbo_frame_tag 'slideover' %>
+    <%= turbo_frame_tag 'modal' %>
+  </body>
+</html>

@@ -1,0 +1,133 @@
+
+<!-- ========== HEADER ========== -->
+<div class="">
+  <nav class="navbar flex items-center justify-between px-4 md:px-6 lg:px-8 mx-auto">
+    <div class="flex items-center">
+      <a class="flex-none bg-black rounded-lg text-base font-semibold px-3 py-1 text-white"
+        href="<%= root_path %>" aria-label="<%= app_name %>">
+        <%= app_name %>
+      </a>
+    </div>
+
+    <!-- Button Group -->
+    <div class="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3">
+      <%= link_to t('sessions.new.sign_in'), new_session_path, class: "btn btn-outline btn-sm" %>
+    </div>
+    <!-- End Button Group -->
+
+  </nav>
+</div>
+<!-- ========== END HEADER ========== -->
+
+
+
+<!-- Hero -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+  <div class="max-w-2xl mx-auto ">
+    <h1 class="text-center text-5xl mb-8">
+      <span class="block font-extralight">Don't feel bad. Nobody gets it.</span>
+      <span class="font-semibold">That's why <%= app_name %> is here.</span>
+    </h1>
+
+    <p class="text-center text-xl mb-8">
+      Turn your cryptic Cloudflare, AWS Route 53, or Name.com DNS records into a beautiful digest! Feel like a DNS pro 💪. Wow your clients 🚀.
+    </p>
+
+    <hr>
+  </div>
+</div>
+<!-- End Hero -->
+
+<div>
+  <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="text-center">
+      <p class="text-lg text-gray-600 pb-8">
+        * PRO is just 20$/month, and you can cancel anytime. No strings attached.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 gap-4">
+      <div class="card w-96 bg-error shadow-sm -rotate-6">
+        <div class="card-body">
+          <span class="badge badge-xs badge-error">You, right now</span>
+          <div class="flex justify-between">
+            <h2 class="text-3xl font-bold">Premium</h2>
+            <span class="text-xl">$29/mo</span>
+          </div>
+          <ul class="mt-6 flex flex-col gap-2 text-xs">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>High-resolution image generation</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Customizable style templates</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Batch processing capabilities</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>AI-driven image enhancements</span>
+            </li>
+            <li class="opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-base-content/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="line-through">Seamless cloud integration</span>
+            </li>
+            <li class="opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-base-content/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="line-through">Real-time collaboration tools</span>
+            </li>
+          </ul>
+          <div class="mt-6">
+            <button class="btn btn-primary btn-block">Subscribe</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card w-96 bg-success shadow-sm rotate-6">
+        <div class="card-body">
+          <span class="badge badge-xs badge-success">You, in 5 minutes</span>
+          <div class="flex justify-between">
+            <h2 class="text-3xl font-bold">Premium</h2>
+            <span class="text-xl">$29/mo</span>
+          </div>
+          <ul class="mt-6 flex flex-col gap-2 text-xs">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>High-resolution image generation</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Customizable style templates</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>Batch processing capabilities</span>
+            </li>
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span>AI-driven image enhancements</span>
+            </li>
+            <li class="opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-base-content/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="line-through">Seamless cloud integration</span>
+            </li>
+            <li class="opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4 me-2 inline-block text-base-content/50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+              <span class="line-through">Real-time collaboration tools</span>
+            </li>
+          </ul>
+          <div class="mt-6">
+            <button class="btn btn-primary btn-block">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
