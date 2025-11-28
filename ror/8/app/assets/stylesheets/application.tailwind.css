@@ -1,13 +1,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-:root {
-  scrollbar-gutter: stable;
+@theme {
+  --font-display: 'Inter', sans-serif;
+  --default-mono-font-family: "JetBrains Mono", monospace;
 }
 
-body {
-  background: #FBF9F7;
-  color: #0B322E;
+:root {
+  scrollbar-gutter: stable;
 }
 
 .pagy {

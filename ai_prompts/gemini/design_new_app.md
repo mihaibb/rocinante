@@ -1,0 +1,1 @@
+you login and you see beautiful stacked layout in style of linear app and attio use font Inter for header and Jetbrain mono for subheaders

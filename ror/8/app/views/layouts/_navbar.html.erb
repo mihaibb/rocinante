@@ -1,56 +1,68 @@
-<div class="inset-x-0 mb-5 sticky border-b border-b-gray-200 top-0 z-10 bg-gray-100" style="background: rgb(243, 240, 238)">
-  <div class="navbar mx-auto max-w-7xl min-h-10 py-0">
-    <div class="flex-1" aria-label="Breadcrumb">
-      <ol role="list" class="flex items-center font-medium">
-        <li>
-          <%= link_to app_name, root_path, class: "block text-sm text-gray-900" %>
-        </li>
+<!-- Top Navigation -->
+<nav class="bg-white border-b border-gray-200 shrink-0 z-20 relative">
+  <div class="h-14 flex items-center justify-between px-4">
+    <div class="flex items-center space-x-4 md:space-x-6 min-w-0">
+      <!-- Logo -->
+      <div class="flex items-center space-x-2 cursor-pointer shrink-0" onclick="app.navigate('dashboard')">
+        <div class="w-6 h-6 bg-black rounded flex items-center justify-center text-white font-bold text-xs">P</div>
+        <span class="font-semibold tracking-tight text-sm hidden sm:inline">
+          <%= app_name %>
+        </span>
+      </div>
 
-        <% if authenticated? %>
-          <li>
-            <div class="flex items-center text-sm">
-              <svg class="size-5 shrink-0 text-gray-300" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                <path d="M5.555 17.776l8-16 .894.448-8 16-.894-.448z" />
-              </svg>
-              <div class="relative inline-block text-left" data-controller="dropdown">
-                <button type="button" class="inline-flex items-center" data-dropdown-target="btn">
-                  <%= Current.organization&.name %>
+      <div class="h-4 w-px bg-gray-300 hidden sm:block shrink-0"></div>
 
-                  <svg class="-mr-1 size-4 " viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" data-slot="icon">
-                    <path fill-rule="evenodd" d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
-                  </svg>
-                </button>
+      <!-- Context Switcher -->
+      <div class="relative group min-w-0">
+        <button id="context-trigger"
+          class="flex items-center space-x-2 text-sm font-medium hover:bg-gray-50 px-2 py-1 rounded transition-colors max-w-full">
+          <span id="current-podcast-name" class="truncate max-w-[120px] sm:max-w-xs">Loading...</span>
+          <span class="text-gray-400 text-xs shrink-0">▼</span>
+        </button>
+        <!-- Dropdown -->
+        <div
+          class="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 shadow-lg rounded-md hidden group-hover:block py-1 z-50">
+          <div class="px-3 py-1.5 text-xs font-mono text-gray-400 uppercase tracking-wider">Switch Org/Project</div>
+          <div id="podcast-list-container"></div>
+        </div>
+      </div>
 
-                <div class="absolute left-0 z-10 mt-2 w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-hidden hidden"
-                  role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" data-dropdown-target="menu">
-                  <div class="py-1" role="none">
-                    <span class="block px-4 pt-2 text-xs text-gray-500" role="menuitem" tabindex="-1" id="menu-item-0">Organizations</span>
-                    <% Current.user.organizations.each do |organization| %>
-                      <%= link_to organization.name, home_path(org_slug: organization.slug), class: "w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem", tabindex: "-1" %>
-                    <% end %>
-                  </div>
-
-                  <div class="py-1" role="none">
-                    <%= button_to("STOP", stop_impersonating_admin_users_path, data: { turbo: false }, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") if Current.user != true_user %>
-                    <%= button_to("Logout", session_path, data: { turbo: false }, method: :delete, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ol>
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center space-x-1">
+        <button onclick="app.navigate('dashboard')"
+          class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded transition-colors">Home</button>
+        <button onclick="app.navigate('plans')"
+          class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded transition-colors">Plans</button>
+        <button onclick="app.navigate('library')"
+          class="px-3 py-1.5 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-50 rounded transition-colors">Library</button>
+      </div>
     </div>
-    <div class="flex-none">
-      <ul class="menu menu-horizontal py-0 px-1">
-        <% if authenticated? %>
-          <!-- IF USER AUTHENTICATED -->
-        <% else %>
-          <li class="py-0">
-            <%= link_to "Sign In", new_session_path, class: 'text-link' %>
-          </li>
-        <% end %>
-      </ul>
+
+    <div class="flex items-center space-x-4 shrink-0">
+      <!-- User Profile -->
+      <div class="flex items-center space-x-2">
+        <div
+          class="w-8 h-8 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center text-xs font-mono">
+          JD</div>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button onclick="app.toggleMobileMenu()" class="md:hidden p-2 text-gray-500 hover:text-black focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
   </div>
-</div>
+
+  <!-- Mobile Menu (Hidden by default) -->
+  <div id="mobile-menu"
+    class="hidden md:hidden border-t border-gray-100 bg-gray-50 px-4 py-2 space-y-1 absolute w-full z-50 shadow-lg">
+    <button onclick="app.navigate('dashboard')"
+      class="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-100 rounded transition-colors">Home</button>
+    <button onclick="app.navigate('plans')"
+      class="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-100 rounded transition-colors">Plans</button>
+    <button onclick="app.navigate('library')"
+      class="block w-full text-left px-3 py-2 text-sm font-medium text-gray-600 hover:text-black hover:bg-gray-100 rounded transition-colors">Library</button>
+  </div>
+</nav>

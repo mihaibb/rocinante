@@ -27,7 +27,7 @@ class RailsAppSetup
   def initialize(options)
     @app_name = options[:app] || "new_rails_app"
     @namespace = options[:ns] || "labs"
-    @debug = options[:debug] || true
+    @debug = options[:debug] || false
 
     if @namespace == "frombase"
       @app_base_path = "~/Projects/frombase/#{@app_name}"
@@ -152,6 +152,8 @@ class RailsAppSetup
 
     run_app("git add .")
     run_app("git commit -m 'Setup initial application structure'")
+
+    run("cd #{app_path} && echo 'Setup completed for #{@app_name} in #{@namespace} namespace'")
   end
 end
 
