@@ -1,9 +1,12 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+
 @theme {
   --font-display: 'Inter', sans-serif;
   --default-mono-font-family: "JetBrains Mono", monospace;
+
+  --container-8xl: 90rem;
 }
 
 :root {

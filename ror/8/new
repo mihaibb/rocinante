@@ -150,6 +150,9 @@ class RailsAppSetup
     run_app("bin/rails db:seed")
     run_app("bin/rubocop")
 
+    # Add AI Instructions
+    copy_file("AI_CONTEXT.md", "AI_CONTEXT.md")
+
     run_app("git add .")
     run_app("git commit -m 'Setup initial application structure'")
 
