@@ -3,29 +3,17 @@
   <div class="h-14 flex items-center justify-between px-4">
     <div class="flex items-center space-x-4 md:space-x-6 min-w-0">
       <!-- Logo -->
-      <div class="flex items-center space-x-2 cursor-pointer shrink-0" onclick="app.navigate('dashboard')">
+      <a href="<%= root_path %>" class="flex items-center space-x-2 cursor-pointer shrink-0">
         <div class="w-6 h-6 bg-black rounded flex items-center justify-center text-white font-bold text-xs">P</div>
         <span class="font-semibold tracking-tight text-sm hidden sm:inline">
           <%= app_name %>
         </span>
-      </div>
+      </a>
 
       <div class="h-4 w-px bg-gray-300 hidden sm:block shrink-0"></div>
 
       <!-- Context Switcher -->
-      <div class="relative group min-w-0">
-        <button id="context-trigger"
-          class="flex items-center space-x-2 text-sm font-medium hover:bg-gray-50 px-2 py-1 rounded transition-colors max-w-full">
-          <span id="current-podcast-name" class="truncate max-w-[120px] sm:max-w-xs">Loading...</span>
-          <span class="text-gray-400 text-xs shrink-0">▼</span>
-        </button>
-        <!-- Dropdown -->
-        <div
-          class="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 shadow-lg rounded-md hidden group-hover:block py-1 z-50">
-          <div class="px-3 py-1.5 text-xs font-mono text-gray-400 uppercase tracking-wider">Switch Org/Project</div>
-          <div id="podcast-list-container"></div>
-        </div>
-      </div>
+      <%= render "application/organization_toggle" %>
 
       <!-- Desktop Nav Links -->
       <div class="hidden md:flex items-center space-x-1">

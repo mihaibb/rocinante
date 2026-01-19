@@ -1,0 +1,25 @@
+<el-dropdown class="relative group min-w-0">
+  <button class="flex items-center space-x-2 text-sm font-medium hover:bg-gray-50 px-2 py-1 rounded transition-colors max-w-full">
+    <span class="truncate max-w-[120px] sm:max-w-xs">
+      <%= Current.organization.name %>
+    </span>
+    <span class="text-gray-400 text-xs shrink-0">▼</span>
+  </button>
+
+
+  <el-menu anchor="bottom start" popover class="absolute top-full left-0 mt-1 w-56 bg-white border border-gray-200 shadow-lg rounded-md hidden group-hover:block py-1 z-50">
+    <% Current.user.organizations.each do |organization| %>
+      <el-menu-item>
+        <%= tag.span organization.name, class: "block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100", role: "menuitem", tabindex: "-1", id: "menu-item-#{organization.id}" %>
+      </el-menu-item>
+    <% end %>
+
+    <hr role="none" class="border-gray-200" />
+
+    <el-menu-item>
+      <%= button_to("STOP", stop_impersonating_admin_users_path, data: { turbo: false }, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") if Current.user != true_user %>
+      <%= button_to("Logout", session_path, data: { turbo: false }, method: :delete, class: "w-full text-left block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100") %>
+    </el-menu-item>
+  </el-menu>
+</el-dropdown>
+

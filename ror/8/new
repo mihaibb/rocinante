@@ -65,6 +65,11 @@ class RailsAppSetup
   end
 
   def start
+    # Before we start
+    puts "Setting up Rails app #{@app_name} in #{@namespace} namespace at #{app_path}"
+
+    sleep(10) # give user time to cancel if needed
+
     # create the project path if it doesn't exist
     run("rails new #{app_path} -n #{@app_name} -j esbuild -c tailwind --main --skip-kamal")
 
@@ -130,17 +135,18 @@ class RailsAppSetup
 
     copy_dir("app/models", "app/models")
 
-    # Setup tailwind
-    # run_app("yarn add @tailwindcss/forms @tailwindcss/typography @tailwindcss/aspect-ratio")
-    # copy_file("tailwind.config.js", "tailwind.config.js")
-
+    # Setup JS packages
     copy_file("package.json", "package.json")
+
+    # Setup tailwind
+    run_app("yarn add @tailwindplus/elements")
+
     run_app("yarn install")
     run_app("yarn upgrade")
 
     # Translations
     copy_file("config/locales/en.yml", "config/locales/en.yml")
-    copy_file("config/locales/ro.yml", "config/locales/ro.yml")
+    # copy_file("config/locales/ro.yml", "config/locales/ro.yml")
 
     # DB seeds
     copy_file("db/seeds.rb", "db/seeds.rb")
@@ -152,6 +158,13 @@ class RailsAppSetup
 
     # Add AI Instructions
     copy_file("AI_CONTEXT.md", "AI_CONTEXT.md")
+
+    # Setup development env file
+
+    # Setup letter_opener in development
+    run_app("sed -i '' $'41i\\\n\\\n    # Enable letter_opener \n' config/environments/development.rb")
+    run_app("sed -i '' $'42i\\\n    config.action_mailer.delivery_method = :letter_opener \n' config/environments/development.rb")
+    run_app("sed -i '' $'43i\\\n    config.action_mailer.perform_deliveries = true \n' config/environments/development.rb")
 
     run_app("git add .")
     run_app("git commit -m 'Setup initial application structure'")

@@ -1,0 +1,17 @@
+ro:
+  application:
+    name: "NUMELE APLICAȚIEI"
+
+
+  sessions:
+    new:
+      sign_in: "Autentificare"
+      forgot_password: "Ai uitat parola?"
+      create_account: "Creează un cont"
+      or: "Sau"
+
+  passwords:
+    new:
+      forgot_password: "Ai uitat parola?"
+      email_placeholder: "Introdu adresa ta de email"
+      send_instructions: "Trimite instrucțiuni de resetare a parolei"
