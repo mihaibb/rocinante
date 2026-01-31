@@ -107,6 +107,7 @@ All detailed patterns in `references/`:
 | [stimulus.md](./references/stimulus.md) | Small controllers, data attributes, clickable table rows |
 | [testing.md](./references/testing.md) | Minitest, fixtures, I18n assertions |
 | [anti-patterns.md](./references/anti-patterns.md) | Service objects, dependency injection, over-engineering |
+| [tailwind_elements.md](./references/tailwind_elements.md) | Using Tailwind Elements components in Rails |
 </reference_index>
 
 <success_criteria>

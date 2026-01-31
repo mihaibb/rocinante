@@ -253,3 +253,101 @@ Use builders when:
 - Complex validation logic
 - External API calls during creation
 </namespaced_builders>
+
+
+<concernable>
+## Concernable Models
+
+For records that can be associated with multiple models, use a `Concernable` pattern.
+
+```ruby
+# app/models/label.rb
+class Label < ApplicationRecord
+  COLORS = %w[stone sky blue purple green orange yellow red pink].freeze
+
+  has_many :labelings, dependent: :destroy
+
+  validates :name, presence: true, uniqueness: true
+  validates :color, presence: true, inclusion: { in: COLORS }
+end
+
+# app/models/labeling.rb
+class Labeling < ApplicationRecord
+  belongs_to :label
+  belongs_to :labelable, polymorphic: true
+
+  validates :label_id, uniqueness: { scope: [ :labelable_type, :labelable_id ] }
+end
+
+# app/models/concerns/labelable.rb
+module Labelable
+  extend ActiveSupport::Concern
+
+  included do
+    has_many :labelings, as: :labelable, dependent: :destroy
+    has_many :labels, through: :labelings
+  end
+
+  def labeled_with?(label)
+    labels.include?(label)
+  end
+
+  def add_label(label)
+    labels << label unless labeled_with?(label)
+  end
+
+  def remove_label(label)
+    labels.delete(label)
+  end
+
+  def label_names
+    labels.pluck(:name).join(" ")
+  end
+end
+```
+
+# Usage in a model:
+```ruby
+class Task < ApplicationRecord
+  include Labelable
+end
+```
+
+Another example Metadata concern:
+```ruby
+# app/models/metadata.rb
+class Metadata < ApplicationRecord
+  belongs_to :metadatable, polymorphic: true
+
+  json_store :data, default: {}
+end
+
+# app/models/concerns/metadatable.rb
+module Metadatable
+  extend ActiveSupport::Concern
+
+  included do
+    has_one :metadata, as: :metadatable, dependent: :destroy, class_name: "::Metadata"  
+  end
+
+  def metadata_data
+    metadata&.data || {}
+  end
+
+  def metadata_data=(value)
+    (metadata || build_metadata).update!(data: value)
+  end
+end
+```
+
+# Usage in a model:
+```ruby
+class Article < ApplicationRecord
+  include Metadatable
+
+  after_create do
+    self.metadata_data = { views: 0, shares: 0 }
+  end
+end
+```
+</concernable>
