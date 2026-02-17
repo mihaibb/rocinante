@@ -121,6 +121,19 @@ class Client < ApplicationRecord
   scope :status, ->(status) { where(status: status) }
 end
 ```
+
+When defining scopes, use arel table for simple conditions.
+It will be easier if you need to join with other scopes later on.
+
+```ruby
+
+# Good - arel table
+scope :active, -> { where(end_date: nil).or(where(arel_table[:end_date].gt(Date.current)) }
+
+# Bad - string SQL
+scope :active, -> { where(end_date: nil).or(where("end_date > ?", Date.current)) }
+
+```
 </scopes>
 
 <date_queries>
