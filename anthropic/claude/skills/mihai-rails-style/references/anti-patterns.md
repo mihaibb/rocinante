@@ -295,3 +295,32 @@ const fetchClients = async (): Promise<Client[]> => {
 
 Stimulus controllers are simple enough that TypeScript adds more friction than value.
 </typescript>
+
+<sti_subclasses_create>
+## STI Subclasses for Creation
+Don't create STI classes via the has_many association.
+
+```ruby
+# Bad - STI subclasses for creation
+organization.clients.create!(type: "PremiumClient", name: "Acme Corp")
+
+# Good - use the subclass directly
+PremiumClient.create!(organization: organization, name: "Acme Corp")
+```
+
+</sti_subclasses_create>
+
+<class_names_as_strings>
+
+## Class Names as Strings
+Avoid doing this but if needed use the class name property instead of a string.
+
+```ruby
+# Bad - string class names
+Client.create(type: "PremiumClient", name: "Acme Corp")
+
+# Good - use the class directly
+Client.create(type: PremiumClient.name, name: "Acme Corp")
+```
+
+</class_names_as_strings>
