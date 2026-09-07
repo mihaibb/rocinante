@@ -1,4 +1,5 @@
 ---
+name: asb-voters
 description: "Distills a person's or company's strengths, experiences, and obsessions down to their one or two VOTERS — the decisive, idiosyncratically extreme traits that win the contest because customers who value them accept every other trade-off. Runs each candidate through a hard gauntlet: extremity earned through obsession (not mere competence), rarity among peers, decisiveness (name the weaknesses it overpowers), and reverberation (it must force decisions in product, pricing, and market). Caps the answer at two, records survivors in VOTERS.md — plus the near-miss 'special strengths' to deploy — and delivers the honest zero-voter verdict when nothing is extreme yet. Takes a self-portrait file (M-numbered), strengths or keystones charts, or a live capture. Load when the user asks what makes them special, what to bet the strategy on, their unfair advantage or superpower, or to 'find our voters.' Do NOT load to build the full self-portrait (the previous step) or to design the whole strategy — this file feeds it."
 ---
 
@@ -55,7 +56,11 @@ segments walked away from) reverberated outward from that one voter.
    obsession nobody has heard of is still rare — the missing
    reputation is an investment plan, not a failed test. Conversely,
    when reputation IS the claim, ask for the citable artifact (the
-   post peers link, the thing you're known by), not self-report.
+   post peers link, the thing you're known by), not self-report. When you
+test rarity against the field ("you and forty others?"), confirm the
+current competitive field using your search tools; do not rely on
+internal (training) knowledge, which is stale and may miss the peers
+who make a trait common — or the gap that makes it rare.
 3. **Decisive — name what it overpowers.** A voter proves itself by
    the trade-offs customers accept for it: the terrible companion
    software, the banned add-ons, the walked-away-from segments, the

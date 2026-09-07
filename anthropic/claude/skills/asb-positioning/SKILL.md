@@ -1,4 +1,5 @@
 ---
+name: asb-positioning
 description: "Converts marketing copy — headlines, ads, homepage claims, pitches, positioning statements — into value-first, vivid language: reframes save-time/save-money pitches as create-more-value pitches in the currency the customer measures value, fits each claim to the right level of the customer's needs (features at your level, the promise one level up, aspirations referenced but never promised, obviated steps bragged about), keeps every claim consistent with the declared pricing strategy (More for More, More for Less, or Less for Less), and forces specificity — no generic words, no clichés, show-don't-tell, real numbers only, claims passing the Opposite Test. Works one message at a time, recording survivors in POSITIONING.md. Sharper with an ideal-customer definition and a needs stack; works without. Load when the user wants marketing copy, positioning, headlines, or a pitch rewritten, sharpened, or audited. Do NOT load to build the needs stack or define the ideal customer — upstream steps this skill consumes."
 ---
 
@@ -43,13 +44,43 @@ answers, 24/7 — maximize customer satisfaction"; "reduce infrastructure
 costs with auto-scaling" becomes "handle a viral traffic spike without
 losing a single lead."
 
+Savings is not the only way a message fails this rule. Two others are
+just as common, and neither trips a save/spend test:
+
+- **The mechanism pitch** — every sentence's subject is how the product
+  works. "Our inference engine resolves every dependency in your stack
+  into one canonical graph." "Derived from first principles, with
+  every assumption declared at each step." This is the default failure of
+  technical, scientific, and academic founders, who mistake the
+  impressiveness of the machine for the reader's reason to care.
+- **The deliverable pitch** — what arrives, rather than what changes.
+  "A 40-page audit with every issue ranked by severity" names a thing
+  in the buyer's inbox; nobody is graded on receiving a document.
+
+All three fail identically: they promise more of something the buyer
+does not count. The repair is the same for all three — find the
+scoreboard, promise more of that. Mechanism and deliverable claims
+aren't banned, they're demoted: they belong at your level, as
+features.
+
 So the first question for any message is: *what is the paramount goal
 of the person reading this, and in what units do they count it?* The
-rewrite promises more of that. That currency question is also the
+rewrite promises more of that. Asked of the user directly it tends to
+return abstractions — efficiency, peace of mind — so ask it sideways:
+what does this person's boss praise or blame them for at their review,
+and what does someone else in the company say about them that makes
+their year or ruins it? That currency question is also the
 rule's own escape valve: when the reader's scoreboard genuinely *is*
 cost — a procurement or finance role comped on savings — the rule
 picks cost for that reader, stated as their win ("a cut you report
-at next quarter's budget review"), not as your discount. One product
+at next quarter's budget review"), not as your discount. The test is
+narrow, because users over-claim it: does this reader *report* that
+number upward, and are they *paid* on it? Both, or the exception
+doesn't fire — caring about cost isn't qualifying, since at some
+point everyone does. A budget you defend is not a number you get
+promoted for shrinking. And it's granted per *reader*, not per
+company: one buyer qualifying doesn't license a savings pitch aimed
+at the colleague who signs. One product
 often needs both: value-framed statements for the champion,
 cost-framed for the approver, each tagged by audience.
 
@@ -78,9 +109,19 @@ deal"). Where a claim sits determines what kind of claim it should be:
 - **Levels below you get bragged about.** You make those steps
   obsolete — say so, vividly: nothing to learn, manage, or pay for
   separately ("never think about infrastructure — live in one minute,
-  even if you can't tell a server from a pizza box").
+  even if you can't tell a server from a pizza box"). These are
+  absence claims by construction, and that's fine in this role: the
+  value rule governs a message's crux, not every supporting clause.
+  What it forbids is an absence claim doing headline duty.
 
-A complete positioning-statement list covers all five roles. If the
+A complete positioning-statement list covers all five roles — and
+there is no sixth. An audience filter is not a role: narrowing lands
+*inside* a statement, as specificity qualifying a claim ("for the
+post-Series-A healthcare company facing its first SOC 2"), never as
+a standalone entry announcing who you're for. A message that does
+nothing but declare an audience gets folded into the claim it
+qualifies, or retired. Who the customer is was decided upstream; all
+this skill insists on is that the wording be specific about it. If the
 user has a needs-stack file (levels numbered N1, N2, …), read levels
 and roles straight from it and cite them; if not, elicit a minimal
 ladder inline — your level, one up, one down — before rewriting.
@@ -95,7 +136,7 @@ personal violation. It's terrifying. You pay a consultant $300 an
 hour to fix it, and you're still wondering whether it happens again
 in three months." Evocative emotion, personal, a number instead of
 "expensive," a specific uneasy mental state instead of "sometimes it
-recurs." Four moves get copy there:
+recurs." Five moves get copy there:
 
 1. **No generic words.** Words that span broad concepts instead of
    conjuring an image — very, many, various, several, some, effort,
@@ -123,7 +164,8 @@ recurs." Four moves get copy there:
    of X is here; transforming the way you X; X is broken/dead/sucks;
    everything you know about X is wrong; saves time so you can get
    back to X; fast and easy; for everyone; …and more; win-win; all
-   new; solution; genuine; authentic; cutting-edge; game-changing;
+   new; solution (in its marketing-speak sense only — the chemistry
+   or math sense is fine); genuine; authentic; cutting-edge; game-changing;
    revolutionary; disruptive; value-add; undisputed; world-class.
    Everyone claims them, nobody believes them — 78% of "About Us"
    pages claim to be "the leading provider" of something.
@@ -139,7 +181,51 @@ recurs." Four moves get copy there:
    everyone knows earns credibility for the claims that follow — and
    **own it completely** — an abused word is usable only when backed
    with extraordinary specific proof, led by the proof, not the word.
-4. **The Opposite Test.** Construct each claim's opposite. If no
+4. **Clauses that subtract, not add.** Every clause moves a
+   sentence's scope one direction or the other, and the conjunction
+   is the tell — though *which* word (and, or, a comma, a slash,
+   "plus," "as well as") means nothing; only the direction does.
+   Like the value gate, this one fires on a message's **crux**, not
+   on every sentence — check that first, before running any test: a
+   spec block, a features page, an integration list is an enumeration
+   doing the job that page exists for, and the test is never run on
+   it. What's forbidden is a widening conjunction in the claim
+   itself. "US
+   B2B SaaS, 15 to 60 people, and a data team already on payroll"
+   gets narrower with every clause. "Creates new revenue or helps you
+   serve more customers" gets wider with every clause. Narrowing is
+   specificity applied to a claim's extent; widening is length
+   impersonating detail — it reads to the writer as more capability
+   and to the reader as less, because a list of things you do is read
+   as an average, not a maximum, and by construction none of the
+   items is the crux. **The test: delete the conjunction and
+   everything after it.** Broader without it means the clause was
+   working; sharper without it means the clause was diluting. Run it
+   on a whole modifier, never on a fragment inside one: "Series A or
+   B" is a disjunction *within* a filter, and a filter narrows — the
+   honest deletion removes the whole stage requirement, which leaves
+   "companies." Accuracy also outranks this rule, always: a range
+   that is simply true is not padding. Four
+   repairs, checked in this order: **subordinate** when the halves
+   sit at different levels — "turns client problems into AI products
+   and new revenue" joins what you build to what changes, so demote
+   the mechanism into a "through …" phrase and the conjunction
+   disappears; **split** when they serve two audiences with two
+   scoreboards — two statements, each tagged, never one sentence;
+   **rank** when they're genuine peers — all true, one audience,
+   none a means to another — where nothing deserves cutting: lay the
+   placements out and let the user choose, because which claim
+   matters most is theirs to decide. Make one of them the claim
+   (ask which carries the most weight for this buyer), or give each
+   its own statement, or keep all of them out of the claim
+   entirely — enumerating is a page's job, not a statement's, so
+   that choice records nothing here; **subtract**
+   last, and only when one of them really is the weaker, or simply
+   isn't true — cut it.
+   Expect resistance here that the other rules don't
+   draw: narrowing feels like turning away revenue. It isn't. It
+   changes who you *say* you serve, not who you *will* serve.
+5. **The Opposite Test.** Construct each claim's opposite. If no
    successful company would rationally choose the opposite ("difficult
    to use," "we block communication"), the claim is trivial —
    mandatory, undifferentiating, a fancier "2+2=4" — and it dies. It
@@ -231,22 +317,6 @@ stronger anyway. A false specific is worse than a generic: generics
 bore, fabrications destroy trust and can be legally actionable. This
 gate outranks everything — vividness never justifies fiction.
 
-### Vocabulary
-
-- **Statement (P1, P2, …)** — one settled positioning statement;
-  numbered in settle order, frozen.
-- **Value framing** — creates more of what the buyer's scoreboard
-  counts, never saves time/money/efficiency.
-- **Level fit** — the claim matches its role: features at your
-  level, promise one up, aspiration far above, counter against
-  occupants above, brag below.
-- **Price story** — consistent with the one declared strategy: More
-  for More, More for Less, or Less for Less.
-- **Vivid** — no generics, no clichés, shown not told,
-  Opposite-Test-passing.
-- **Facts to verify** — placeholders awaiting the user's real
-  numbers or proof artifacts.
-
 ## The rewriter's posture
 
 ### Be clear, not clever
@@ -259,8 +329,8 @@ the actual point rather than gesturing wittily at it.
 
 ### Restate references; never cite a bare token
 
-When you mention a numbered or lettered item to the user — K4, W2,
-O17, H3, and the like — add a few plain words on what it actually is
+When you mention a numbered or lettered item to the user — P1, K4,
+W2, O17, H3, and the like — add a few plain words on what it actually is
 ("K4 — the owner whose career rides on the site"). A bare token is
 unreadable to a human who saw it defined hours or days ago: the tag is
 for traceability, the gloss is for comprehension. Keep the tag for
@@ -382,8 +452,16 @@ Per message, run the gates in this order (each visible, briefly):
 1. **Level fit** — which level is this claim at, and is that the
    right role for it? (A feature blurb doing aspiration duty, or a
    promise three levels up, gets re-slotted before rewording.)
-2. **Value framing** — is it save-time/save-money/efficiency? Reframe
-   into the buyer's scoreboard currency.
+2. **Value framing** — three ways to fail: a **saving** (time, money,
+   efficiency, headcount), a **mechanism** (the sentence is about how
+   the product works), or a **deliverable** (what arrives, not what
+   changes). The test: who is this sentence *about*? If the answer is
+   you or your product rather than something the reader is counted on,
+   reframe before going further. This gate blocks the wording pass —
+   don't polish a sentence that hasn't earned its frame yet. It fires
+   on a message's crux, not on every sentence: a mechanism or
+   deliverable claim correctly slotted at your level, as a feature
+   underneath a claim that earned its place, is doing its job.
 3. **Price-story fit** — does the claim tell the declared strategy's
    story? Premium-craft words in a More-for-Less file, affordability
    leads in a More-for-More file, all-green comparison charts in a
@@ -391,7 +469,7 @@ Per message, run the gates in this order (each visible, briefly):
    story — all mixed signals, reworked before wording is polished.
    (Strategy undeclared: check the statements against each other.)
 4. **Vivid pass** — generics out, clichés out, show-don't-tell,
-   compress for density.
+   scope narrowed rather than widened, compress for density.
 5. **Opposite Test** — on the final wording; dominance exception only
    with the user's proof.
 6. **Truth check** — every specific confirmed or bracketed
@@ -405,7 +483,12 @@ at someone other than the primary customer. **Create `POSITIONING.md` at the fir
 statement and append as you go** — copying the user's ENTIRE
 remaining message queue into the `## Message queue` section verbatim
 at creation, striking each message as it settles: original copy that
-lives only in chat dies with the session. Keep the header pointer
+lives only in chat dies with the session. A message that yields no
+compliant statement is still walked — record it under `## Retired
+without a statement` with the gate that killed it and what replaced
+it, because the queue is deleted at finalization and a message that
+simply vanishes reads to a resuming session as work still to do.
+Keep the header pointer
 current, including the in-flight message's text and any unconfirmed
 candidate rewrites — record-only-at-settle protects the statement
 sections, not the resume pointer. Landing a [VERIFY] fact later
@@ -439,7 +522,9 @@ hypothesized (a secondhand pattern, to validate before heavy spend).
 - **Facts to verify surfaced**: read back with a plain warning that
   statements carrying `[VERIFY]` are not publishable until the real
   figures land.
-- Finalize: remove the in-progress header and message queue; close
+- Finalize: remove the in-progress header and message queue — the
+  retired list and the preamble stay, since both stay true after the
+  walk closes; close
   by naming the reuse pattern — these statements are the internal
   reference for ad hooks, social topics, homepage claims, and sales
   scripts — and, where upstream files (or the pricing strategy) were
@@ -451,12 +536,12 @@ hypothesized (a secondhand pattern, to validate before heavy spend).
 ```markdown
 # Positioning statements — <company / product>
 
-> ⚠️ IN PROGRESS — messages settled: <count> of <total>; currently
-> on: <the message, quoted — or "gap-fill: <role>"> <with any
-> candidate rewrites offered but not yet confirmed>. If you are
-> resuming, continue there; the un-walked originals are in
-> ## Message queue below. (This note and the queue are removed at
-> finalization.)
+> ⚠️ IN PROGRESS — messages walked: <count> of <total> (<n> settled,
+> <n> retired); currently on: <the message, quoted — or "gap-fill:
+> <role>"> <with any candidate rewrites offered but not yet
+> confirmed>. If you are resuming, continue there; the un-walked
+> originals are in ## Message queue below. (This note and the queue
+> are removed at finalization.)
 
 <Two or three lines: whose customer this targets — the
 ideal-customer and needs-stack files read (name them), or the inline
@@ -487,6 +572,11 @@ and frozen; each carries its role and provenance.>
 3. "<original message text, verbatim>"
 4. "<…>"
 
+## Retired without a statement (stays after finalization)
+
+- "<original message, verbatim>" — killed by <the gate>; <what
+  replaced it, or why nothing could>.
+
 ## Facts to verify
 
 - [VERIFY: <the fact>] — needed by P2. <who/where to get it>
@@ -501,8 +591,9 @@ doesn't exist yet, building them and re-running the weakest
 statements is the method's fuller path.>
 ```
 
-P-numbers are stable once written; revisions append new statements
-(marking the old superseded) rather than renumbering. Numbers run in
+Statements are numbered in settle order and frozen: P-numbers are
+stable once written, and revisions append new statements (marking
+the old superseded) rather than renumbering. Numbers run in
 settle order while sections group by role, so in-section numbering
 is often non-sequential — expected. A counter statement's bracket
 cites the level it counters. ("Solution" is banned in its
